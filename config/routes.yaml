@@ -1,0 +1,12 @@
+controllers:
+    resource: ../src/Controller/
+    type: annotation
+
+homepage:
+    path:          /
+    controller:    Symfony\Bundle\FrameworkBundle\Controller\TemplateController
+    defaults:
+        template:  'static/homepage.html.twig'
+        maxAge:    3600
+        sharedAge: 3600
+        private: false

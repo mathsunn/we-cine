@@ -1,0 +1,9 @@
+tmdb_symfony:
+  api_key: '%tmdb_api_key%'
+  options:
+    http:
+      client: Symfony\Component\HttpClient\Psr18Client
+      request_factory: Nyholm\Psr7\Factory\Psr17Factory
+      response_factory: Nyholm\Psr7\Factory\Psr17Factory
+      stream_factory: Nyholm\Psr7\Factory\Psr17Factory
+      uri_factory: Nyholm\Psr7\Factory\Psr17Factory

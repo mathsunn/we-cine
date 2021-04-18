@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="card"
+    id="movie_1"
+  >
+    <div
+      class="card-body"
+    >
+      <h5
+        class="card-title"
+      >
+        title
+        <span>
+          <ul
+            class="ratings"
+          >
+            <li
+              class="star selected"
+            />
+            <li
+              class="star selected"
+            />
+            <li
+              class="star selected"
+            />
+            <li
+              class="star selected"
+            />
+            <li
+              class="star selected"
+            />
+          </ul>
+        </span>
+        <span>
+          (100 votes)
+        </span>
+      </h5>
+      <h6
+        class="card-subtitle mb-2 text-muted"
+      >
+        2021
+      </h6>
+      <p
+        class="card-text"
+      >
+        overview
+      </p>
+      <button
+        class="card-link btn btn-primary"
+      >
+        Lire la suite
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

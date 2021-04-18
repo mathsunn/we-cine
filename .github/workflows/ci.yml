@@ -1,0 +1,42 @@
+name: CI
+
+on:
+    push:
+    pull_request:
+
+jobs:
+    build:
+        name: Docker build
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+            - uses: actions/setup-node@v1
+              with:
+                node-version: '14'
+            - run: yarn install
+            - run: yarn build
+            - name: Pull images
+              run: docker-compose pull --parallel --quiet --ignore-pull-failures 2> /dev/null
+            - name: Build images
+              run: docker-compose build --pull
+            - name: Start services
+              run: docker-compose up -d
+            - name: Get logs
+              run: docker-compose logs
+            - name: Wait for services
+              run: |
+                  while status="$(docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" "$(docker-compose ps -q php)")"; do
+                    case $status in
+                      starting) sleep 1;;
+                      healthy) exit 0;;
+                      unhealthy) exit 1;;
+                    esac
+                  done
+                  exit 1
+            - name: Check HTTP reachability
+              run: curl http://localhost
+            - name: Check HTTPS reachability
+              run: curl -k https://localhost
+            - name: PHPUnit tests
+              run: docker-compose exec -T php bin/phpunit

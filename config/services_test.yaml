@@ -1,0 +1,22 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    App\Tests\MockClientCallback:
+        public: true
+        arguments:
+            $fixtureDir: '%kernel.project_dir%/fixtures/HTTP'
+            $client: '@Symfony\Component\HttpClient\MockHttpClient.inner'
+            $record: '%env(bool:RECORD_HTTP_RESPONSE)%'
+        calls:
+            - setLogger: ['@logger']
+
+    Symfony\Component\HttpClient\MockHttpClient:
+        decorates: http_client
+        arguments:
+            - '@App\Tests\MockClientCallback'
+
+    Symfony\Component\HttpClient\Psr18Client:
+        arguments:
+            - '@http_client'

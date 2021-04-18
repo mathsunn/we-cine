@@ -1,0 +1,30 @@
+body {
+}
+
+.ratings {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  text-align: left;
+}
+
+.star {
+  position: relative;
+  line-height: 30px;
+  display: inline-block;
+  transition: color 0.2s ease;
+  color: #ebebeb;
+}
+
+.star:before {
+  content: "\2605";
+  width: 30px;
+  height: 30px;
+  font-size: 30px;
+}
+
+.star.selected {
+  transition: color 0.8s ease;
+  color: black;
+}
