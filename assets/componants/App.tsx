@@ -38,7 +38,7 @@ const App: React.FC<AppSettings> = () => {
               {selectedGenre ? (
                 <MoviesList />
               ) : (
-                <p>Please select à genre in the left column</p>
+                <p>Please select genre in the left column</p>
               )}
             </div>
           </FilterContext.Provider>

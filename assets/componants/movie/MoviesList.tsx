@@ -59,7 +59,7 @@ const MoviesList: React.FC = () => {
                 setCurrentMovie(movie);
               }}
             >
-              Lire la suite
+              Open
             </button>
           </div>
         </div>
